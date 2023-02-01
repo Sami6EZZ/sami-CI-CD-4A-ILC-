@@ -65,20 +65,20 @@ def load_data_from_csv(file_path):
             # Vérifier si un objet Personne avec le nom de l'expéditeur existe dans la liste Personnes
             expediteur_Personne = next((p for p in Personnes if p.nom == expediteur), None)
             # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
-            if not expediteur_Personne:
-                expediteur_Personne = Personne(expediteur, 0)
-                Personnes.append(expediteur_Personne)
+            if not expediteur_personne:
+                expediteur_personne = Personne(expediteur, 0)
+                personnes.append(expediteur_personne)
             # Vérifier si un objet Personne avec le nom du destinataire existe dans la liste Personnes
-            beneficaire_Personne = next((p for p in Personnes if p.nom == beneficaire), None)
+            beneficaire_personne = next((p for p in personnes if p.nom == beneficaire), None)
             # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
-            if not beneficaire_Personne:
+            if not beneficaire_personne:
                 beneficaire_Personne = Personne(beneficaire, 0)
-                Personnes.append(beneficaire_Personne)
+                personnes.append(beneficaire_personne)
             # Créer un nouvel objet Transaction avec les informations d'expéditeur, de destinataire et de montant   
             transaction = Transaction(expediteur, beneficaire, int(montant))
             transactions.append(transaction)
-            expediteur_Personne.debit(int(montant))
-            beneficaire_Personne.credit(int(montant))
+            expediteur_personne.debit(int(montant))
+            beneficaire_personne.credit(int(montant))
             
             
 
