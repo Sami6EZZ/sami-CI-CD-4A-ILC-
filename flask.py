@@ -49,8 +49,8 @@ t2=Transaction(p2,p3,200)
 t3=Transaction(p4,p3,200)
 
    
-#creation des deux tables Personnes et transactions qui seront remplies des infos recupérées du fichier csv fourni
-Personnes=[p1,p2,p3,p4,p5,p6]
+#creation des deux tables personnes et transactions qui seront remplies des infos recupérées du fichier csv fourni
+personnes=[p1,p2,p3,p4,p5,p6]
 transactions = []
 
 #recupérer les infos du fichiers csv
@@ -62,15 +62,15 @@ def load_data_from_csv(file_path):
         for row in reader:
             # Déballer les valeurs de chaque ligne dans des variables 
             expediteur, beneficaire, montant= row
-            # Vérifier si un objet Personne avec le nom de l'expéditeur existe dans la liste Personnes
-            expediteur_Personne = next((p for p in Personnes if p.nom == expediteur), None)
-            # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
+            # Vérifier si un objet Personne avec le nom de l'expéditeur existe dans la liste personnes
+            expediteur_Personne = next((p for p in personnes if p.nom == expediteur), None)
+            # Si non, créer un nouvel objet Personne et l'ajouter à la liste personnes
             if not expediteur_personne:
                 expediteur_personne = Personne(expediteur, 0)
                 personnes.append(expediteur_personne)
-            # Vérifier si un objet Personne avec le nom du destinataire existe dans la liste Personnes
+            # Vérifier si un objet Personne avec le nom du destinataire existe dans la liste personnes
             beneficaire_personne = next((p for p in personnes if p.nom == beneficaire), None)
-            # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
+            # Si non, créer un nouvel objet Personne et l'ajouter à la liste personnes
             if not beneficaire_personne:
                 beneficaire_Personne = Personne(beneficaire, 0)
                 personnes.append(beneficaire_personne)
@@ -110,11 +110,11 @@ def get_transactions():
     load_data_from_csv('transactions.csv')
     return "\n".join(str(t) for t in transactions)
 
-#endpoint Personnes qui affiche les Personnenes ayant deja effectué une transaction depuis le fichier csv.
+#endpoint personnes qui affiche les Personnenes ayant deja effectué une transaction depuis le fichier csv.
 @app.route("/personnes", methods=["GET"]) 
-def get_Personnes():
+def get_personnes():
     load_data_from_csv('transactions.csv')
-    #print(Personnes)
+    #print(personnes)
     return "\n".join(str(p) for p in personnes)
 
 
@@ -128,10 +128,10 @@ def add_Personne():
     personnes.append(personne)
     return "Personne ajoutée."
 
-#endpoint Personne/id qui permet de supprimer une Personnene de la liste Personnes
+#endpoint Personne/id qui permet de supprimer une Personnene de la liste personnes
 @app.route('/personne/<int:Personne_id>', methods=['DELETE'])
 def delete_Personne(Personne_id):
-    personne = next((personne for Personne in Personnes if personne['id'] == personne_id), None)
+    personne = next((personne for Personne in personnes if personne['id'] == personne_id), None)
     if Personne:
         personnes.remove(personne)
         return {"message": "Personne supprimée"}, 200
