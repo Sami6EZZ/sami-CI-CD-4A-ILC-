@@ -66,7 +66,7 @@
 
 -Utilisation de la route '/transaction' qui permet de créer une nouvelle transaction en leur donnant un émetteur, un recepteur et le montant de la transaction.
     Executez cette fonction avec la commande CURL suivante :
-                ``curl -X POST -d "sender=Simo&receiver=Sami&amount=100" http://localhost:5000/transaction``
+                ``curl -X POST -d "sender=Mohammed&receiver=Sami&amount=200" http://localhost:5000/transaction``
                 !! attention, il faudra bien que le nom du sender our receiver soit dans la liste personnes.
 
  -Utilisation de la route '/balance/name' qui peremt d'afficher le solde de la personne donnée dans le parametre nom.
