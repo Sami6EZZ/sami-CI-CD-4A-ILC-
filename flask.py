@@ -91,7 +91,7 @@ _transactions=[t1,t2,t3]
 def printAll():
     if request.method == 'GET':
         res = "<h1>Liste des Personnenes :</h1><ul>"
-        for personne in Personnes:
+        for personne in personnes:
             res += "<li>NOM : " + personne.nom  + " / SOLDE COMPTE : " + '%.2f' % personne.balance + "€</li>"
         res += "</ul><h1>Liste des transactions :</h1><ul>"
         #for transaction in _transactions:
