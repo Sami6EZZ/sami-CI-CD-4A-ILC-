@@ -132,7 +132,7 @@ def add_Personne():
 @app.route('/personne/<int:personne_id>', methods=['DELETE'])
 def delete_Personne(personne_id):
     personne = next((personne for personne in personnes if personne['id'] == personne_id), None)
-    if Personne:
+    if personne:
         personnes.remove(personne)
         return {"message": "Personne supprimée"}, 200
     else:
