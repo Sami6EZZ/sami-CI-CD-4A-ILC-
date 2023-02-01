@@ -1,5 +1,7 @@
 # sami-CI-CD-4A-ILC-
-<p align="center"><b> PROJET API CI/CD  ESIREM 2023</b></P>
+ PROJET API CI/CD  ESIREM 2023
+  <h1 align="center">PROJET API CI/CD  ESIREM 2023</h1>
+  
   
 Le projet consiste à réaliser est un projet guidé pour la gestion CRUD d'un système de transaction.
 
@@ -13,7 +15,8 @@ Le projet consiste à réaliser est un projet guidé pour la gestion CRUD d'un s
 
 ## Langage utilisé :
   Python 
-   ![Badge1](https://dz2cdn1.dzone.com/storage/temp/12886720-why-devops-and-python.png)
+  
+![Badge1](https://dz2cdn1.dzone.com/storage/temp/12886720-why-devops-and-python.png)
 ## Fonctionnalités :
 
 -Initialisation de l'application Flask
