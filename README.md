@@ -30,6 +30,14 @@
 
 -Route pour affichier les transactions sauvegargdées dans un fichier csv entre 2 personnes.
 
+-Route pour afficher les personnes recupérées du fichier csv.
+
+-Route pour ajouter/supprimer une personne de la liste persons.
+
+-Route pour affichier le solde d'une personne donnée.
+
+-Route pour afficher les transactions d'une personne donnée.
+
 ## Utilisation :
 
 -Installation de flask avec :
