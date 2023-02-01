@@ -80,7 +80,7 @@
 ## Vous trouverez ci-dessus les différentes actions utilisées dans ce projet : 
 
 App build :
-![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-/workflows/appBuild.yml/badge.svg)
+![Generic badge]https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-/blob/main/workflows/appBuild.yml)
 
 Build docker image :
 ![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-s/workflows/buildDockerImage.yml/badge.svg)
