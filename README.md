@@ -2,6 +2,9 @@
  
   <h1 align="center">PROJET API CI/CD  ESIREM 2023</h1>
   
+ ## Réalisé par : 
+  Sami EZZAHID
+  
   
 Le projet consiste à contrôler la gestion CRUD d'un système de transaction.
 
@@ -9,8 +12,7 @@ Le projet consiste à contrôler la gestion CRUD d'un système de transaction.
 
 
 
-## Réalisé par : 
-  Sami EZZAHID
+
 
 
 ## Langage utilisé :
