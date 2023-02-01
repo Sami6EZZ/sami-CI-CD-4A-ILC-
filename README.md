@@ -80,19 +80,19 @@
 ## Vous trouverez ci-dessus les différentes actions utilisées dans ce projet : 
 
 App build :
-![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/appBuild.yml/badge.svg)
+![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-/workflows/appBuild.yml/badge.svg)
 
 Build docker image :
-![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/buildDockerImage.yml/badge.svg)
+![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-s/workflows/buildDockerImage.yml/badge.svg)
 
 New push :
-![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/newPush.yml/badge.svg)
+![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-/workflows/newPush.yml/badge.svg)
 
 Build and push tag :
-![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/build_push.yml/badge.svg)
+![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-/workflows/build_push.yml/badge.svg)
 
 Pull req :
-![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/pullReq.yml/badge.svg)
+![Generic badge](https://github.com/Sami6EZZ/sami-CI-CD-4A-ILC-/workflows/pullReq.yml/badge.svg)
 
 
 
