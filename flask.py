@@ -63,7 +63,7 @@ def load_data_from_csv(file_path):
             # Déballer les valeurs de chaque ligne dans des variables 
             expediteur, beneficaire, montant= row
             # Vérifier si un objet Personne avec le nom de l'expéditeur existe dans la liste Personnes
-            expediteur_Personne = next((p for p in Personnes if p.nom == expediteur), None)
+            expediteur_Personne = next((p for p in personnes if p.nom == expediteur), None)
             # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
             if not expediteur_personne:
                 expediteur_personne = Personne(expediteur, 0)
