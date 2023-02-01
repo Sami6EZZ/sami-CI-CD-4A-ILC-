@@ -3,7 +3,7 @@
   <h1 align="center">PROJET API CI/CD  ESIREM 2023</h1>
   
   
-Le projet consiste à réaliser est un projet guidé pour la gestion CRUD d'un système de transaction.
+Le projet consiste à contrôler la gestion CRUD d'un système de transaction.
 
    ![Badge1](https://i0.wp.com/datascientest.com/wp-content/uploads/2021/03/illu_devops_blog-119.png?resize=1024%2C562&ssl=1.png)
 
@@ -17,6 +17,7 @@ Le projet consiste à réaliser est un projet guidé pour la gestion CRUD d'un s
   Python 
   
 ![Badge1](https://dz2cdn1.dzone.com/storage/temp/12886720-why-devops-and-python.png)
+
 ## Fonctionnalités :
 
 -Initialisation de l'application Flask
