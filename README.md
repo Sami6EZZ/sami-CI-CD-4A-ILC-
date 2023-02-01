@@ -83,7 +83,5 @@ New push :
 Build and push tag :
 ![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/build_push.yml/badge.svg)
 
-Pull req :
-![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/pullReq.yml/badge.svg)
 
 
