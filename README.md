@@ -53,7 +53,7 @@
     
 -Utilisation de la route'/persons' qui affiche la liste des personnes crées et leurs soldes apres avoir chargé les transactions du fichier csv.
     Dans un navigateur web : http://localhost:5000/persons
-    Dans une commande CURL : ``curl -X GET "http://localhost:5000/persons"``
+    Dans une commande CURL : ``curl -X GET "http://localhost:5000/personnes"``
     
      
 -Utilisation de la route '/person' qui permet d'ajouter une personne de type Person ayant un nom: name et un solde: balance.
@@ -67,15 +67,15 @@
 -Utilisation de la route '/transaction' qui permet de créer une nouvelle transaction en leur donnant un émetteur, un recepteur et le montant de la transaction.
     Executez cette fonction avec la commande CURL suivante :
                 ``curl -X POST -d "sender=Simo&receiver=Sami&amount=100" http://localhost:5000/transaction``
-                !! attention, il faudra bien que le nom du sender our receiver soit dans la liste personness.
+                !! attention, il faudra bien que le nom du sender our receiver soit dans la liste personnes.
 
- -Utilisation de la route '/balance/name' qui peremt d'afficher le solde de la personne donnée dans le parametre name.
+ -Utilisation de la route '/balance/name' qui peremt d'afficher le solde de la personne donnée dans le parametre nom.
     Executer cette fonction avec :
         Navigateur web : ``http://localhost:5000/balance/Mouad ``
-        Commande CURL :  ``curl -X GET "http://localhost:5000/balance/Mouad"``
-        !!Attention il faudra bien que le nom donné soit dans la liste persons.
+        Commande CURL :  ``curl -X GET "http://localhost:5000/balance/Sami"``
+        !!Attention il faudra bien que le nom donné soit dans la liste personnes.
         
--Utlisize la route '/transactions/name' qui peremt d'afficher la liste des transactions de la personne donnée dans le parametre name. Executer cette fonction avec : Navigateur web : http://localhost:5000/transactions/Mouad  Commande CURL : curl -X GET "http://localhost:5000/transactions/Mouad". et si le nom donné n'est pas dans la liste persons. la route renvoit une liste vide.
+-Utlisize la route '/transactions/nom' qui peremt d'afficher la liste des transactions de la personne donnée dans le parametre name. Executer cette fonction avec : Navigateur web : http://localhost:5000/transactions/Sami  Commande CURL : curl -X GET "http://localhost:5000/transactions/Sami". et si le nom donné n'est pas dans la liste personnes, la route renvoit une liste vide.
 
 ## Vous trouverez ci-dessus les différentes actions utilisées dans ce projet : 
 
