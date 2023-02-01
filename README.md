@@ -58,16 +58,16 @@
      
 -Utilisation de la route '/person' qui permet d'ajouter une personne de type Person ayant un nom: name et un solde: balance.
      Executez cette fonction avec la commande CURL suivante :
-              ``curl -X POST -d "name=Jerome&balance=5" http://localhost:5000/person``
+              ``curl -X POST -d "nom=Jerome&balance=5" http://localhost:5000/personne``
               
 -Utilisation de la route 'person/id' qui permet de supprimer une personne en donnant son id
      Executez cette fonction avec la commande CURL suivante :
-          ``curl -X DELETE http://localhost:5000/person/1``
+          ``curl -X DELETE http://localhost:5000/personne/1``
 
 -Utilisation de la route '/transaction' qui permet de créer une nouvelle transaction en leur donnant un émetteur, un recepteur et le montant de la transaction.
     Executez cette fonction avec la commande CURL suivante :
-                ``curl -X POST -d "sender=Simo&receiver=Mouad&amount=100" http://localhost:5000/transaction``
-                !! attention, il faudra bien que le nom du sender our receiver soit dans la liste persons.
+                ``curl -X POST -d "sender=Simo&receiver=Sami&amount=100" http://localhost:5000/transaction``
+                !! attention, il faudra bien que le nom du sender our receiver soit dans la liste personness.
 
  -Utilisation de la route '/balance/name' qui peremt d'afficher le solde de la personne donnée dans le parametre name.
     Executer cette fonction avec :
