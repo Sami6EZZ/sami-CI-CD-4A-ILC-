@@ -131,7 +131,7 @@ def add_Personne():
 #endpoint Personne/id qui permet de supprimer une Personnene de la liste personnes
 @app.route('/personne/<int:Personne_id>', methods=['DELETE'])
 def delete_Personne(Personne_id):
-    personne = next((personne for Personne in personnes if personne['id'] == personne_id), None)
+    personne = next((personne for personne in personnes if personne['id'] == personne_id), None)
     if Personne:
         personnes.remove(personne)
         return {"message": "Personne supprimée"}, 200
@@ -162,7 +162,7 @@ def add_transaction():
 @app.route('/balance/<nom>', methods=['GET'])
 def get_balance(nom):
     personne = next((p for p in personnes if p.nom == nom), None)
-    if Personne:
+    if personne:
         balance = personne.balance
         return jsonify({"nom": personne.nom, "balance": balance})
     return jsonify({"erreur": "Personne introuvable"}), 404
