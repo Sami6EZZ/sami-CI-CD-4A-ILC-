@@ -35,37 +35,39 @@
 -Installation de flask avec :
     pip install flask
    
--Utilisez la route '/' pour afficher toutes les personnes et les transactions. 
+-Utilisation dd la route '/' pour afficher toutes les personnes et les transactions. 
     Dans un navigateur web : http://localhost:5000/ 
     Dans une commande CURL : ``curl -X GET "http://localhost:5000/"``
     
--Utilisez la route'/transactions' qui affiche la liste des transactions effectuées qui sont été lises du fichier transactions.csv.
+-Utilisation de la route'/transactions' qui affiche la liste des transactions effectuées qui sont été lises du fichier transactions.csv.
     Dans un navigateur web : http://localhost:5000/transactions
     Dans une commande CURL : ``curl -X GET "http://localhost:5000/transactions"``
     
--Utilisez la route'/persons' qui affiche la liste des personnes crées et leurs soldes apres avoir chargé les transactions du fichier csv.
+-Utilisation de la route'/persons' qui affiche la liste des personnes crées et leurs soldes apres avoir chargé les transactions du fichier csv.
     Dans un navigateur web : http://localhost:5000/persons
     Dans une commande CURL : ``curl -X GET "http://localhost:5000/persons"``
     
      
--Utlisiez la route '/person' qui permet d'ajouter une personne de type Person ayant un nom: name et un solde: balance.
+-Utilisation de la route '/person' qui permet d'ajouter une personne de type Person ayant un nom: name et un solde: balance.
      Executez cette fonction avec la commande CURL suivante :
               ``curl -X POST -d "name=Jerome&balance=5" http://localhost:5000/person``
               
--Utilisez la route 'person/id' qui permet de supprimer une personne en donnant son id
+-Utilisation de la route 'person/id' qui permet de supprimer une personne en donnant son id
      Executez cette fonction avec la commande CURL suivante :
           ``curl -X DELETE http://localhost:5000/person/1``
 
--Utlisiez la route '/transaction' qui permet de créer une nouvelle transaction en leur donnant un émetteur, un recepteur et le montant de la transaction.
+-Utilisation de la route '/transaction' qui permet de créer une nouvelle transaction en leur donnant un émetteur, un recepteur et le montant de la transaction.
     Executez cette fonction avec la commande CURL suivante :
                 ``curl -X POST -d "sender=Simo&receiver=Mouad&amount=100" http://localhost:5000/transaction``
                 !! attention, il faudra bien que le nom du sender our receiver soit dans la liste persons.
 
- -Utlisize la route '/balance/name' qui peremt d'afficher le solde de la personne donnée dans le parametre name.
+ -Utilisation de la route '/balance/name' qui peremt d'afficher le solde de la personne donnée dans le parametre name.
     Executer cette fonction avec :
         Navigateur web : ``http://localhost:5000/balance/Mouad ``
         Commande CURL :  ``curl -X GET "http://localhost:5000/balance/Mouad"``
         !!Attention il faudra bien que le nom donné soit dans la liste persons.
+        
+-Utlisize la route '/transactions/name' qui peremt d'afficher la liste des transactions de la personne donnée dans le parametre name. Executer cette fonction avec : Navigateur web : http://localhost:5000/transactions/Mouad  Commande CURL : curl -X GET "http://localhost:5000/transactions/Mouad". et si le nom donné n'est pas dans la liste persons. la route renvoit une liste vide.
 
 ## Vous trouverez ci-dessus les différentes actions utilisées dans ce projet : 
 
@@ -75,7 +77,13 @@ App build :
 Build docker image :
 ![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/buildDockerImage.yml/badge.svg)
 
+New push :
+![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/newPush.yml/badge.svg)
+
 Build and push tag :
 ![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/build_push.yml/badge.svg)
+
+Pull req :
+![Generic badge](https://github.com/mouadw/4A_ILC_CRUD_API_CI_CD/actions/workflows/pullReq.yml/badge.svg)
 
 
