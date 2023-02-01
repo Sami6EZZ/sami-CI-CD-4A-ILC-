@@ -17,21 +17,24 @@ class Personne:
     def __str__(self):
         return f"Personne({self.nom}, {self.balance})"
     
-    def debit(self, amount):
-        self.balance -= amount
+    def debit(self, montant):
+        self.balance -= montant
+  
         
-    def credit(self, amount):
-        self.balance += amount
+    def credit(self, montant):
+        self.balance += montant
+  
 
-#classe transaction qui a 3 attributs sender, recipent et amount 
+#classe transaction qui a 3 attributs expediteur, recipent et monta 
 class Transaction:
-    def __init__(self, sender, recipient, amount):
-        self.sender = sender
-        self.recipient = recipient
-        self.amount = amount
+    def __init__(self, expediteur, beneficaire, montant):
+        self.expediteur = expediteur
+        self.beneficaire = beneficaire
+        self.montant = montant
+  
     
     def __str__(self):
-        return f"Transaction({self.sender}, {self.recipient}, {self.amount})"
+        return f"Transaction({self.expediteur}, {self.beneficaire}, {self.montant})"
     
 #Création des comptes
 p1=Personne("Mouad",2000)
@@ -58,24 +61,24 @@ def load_data_from_csv(file_path):
         reader = csv.reader(f, delimiter=";")
         for row in reader:
             # Déballer les valeurs de chaque ligne dans des variables 
-            sender, recipient, amount = row
+            expediteur, beneficaire, montant= row
             # Vérifier si un objet Personne avec le nom de l'expéditeur existe dans la liste Personnes
-            sender_Personne = next((p for p in Personnes if p.nom == sender), None)
+            expediteur_Personne = next((p for p in Personnes if p.nom == expediteur), None)
             # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
-            if not sender_Personne:
-                sender_Personne = Personne(sender, 0)
-                Personnes.append(sender_Personne)
+            if not expediteur_Personne:
+                expediteur_Personne = Personne(expediteur, 0)
+                Personnes.append(expediteur_Personne)
             # Vérifier si un objet Personne avec le nom du destinataire existe dans la liste Personnes
-            recipient_Personne = next((p for p in Personnes if p.nom == recipient), None)
+            beneficaire_Personne = next((p for p in Personnes if p.nom == beneficaire), None)
             # Si non, créer un nouvel objet Personne et l'ajouter à la liste Personnes
-            if not recipient_Personne:
-                recipient_Personne = Personne(recipient, 0)
-                Personnes.append(recipient_Personne)
+            if not beneficaire_Personne:
+                beneficaire_Personne = Personne(beneficaire, 0)
+                Personnes.append(beneficaire_Personne)
             # Créer un nouvel objet Transaction avec les informations d'expéditeur, de destinataire et de montant   
-            transaction = Transaction(sender, recipient, int(amount))
+            transaction = Transaction(expediteur, beneficaire, int(montant))
             transactions.append(transaction)
-            sender_Personne.debit(int(amount))
-            recipient_Personne.credit(int(amount))
+            expediteur_Personne.debit(int(montant))
+            beneficaire_Personne.credit(int(montant))
             
             
 
@@ -88,8 +91,8 @@ _transactions=[t1,t2,t3]
 def printAll():
     if request.method == 'GET':
         res = "<h1>Liste des Personnenes :</h1><ul>"
-        for Personne in Personnes:
-            res += "<li>NOM : " + Personne.nom  + " / SOLDE COMPTE : " + '%.2f' % Personne.balance + "€</li>"
+        for personne in Personnes:
+            res += "<li>NOM : " + personne.nom  + " / SOLDE COMPTE : " + '%.2f' % personne.balance + "€</li>"
         res += "</ul><h1>Liste des transactions :</h1><ul>"
         #for transaction in _transactions:
         res += "<li>P1 : " + p1.nom +  " / P2 : " + p2.nom+  ":   Montant de la transaction : 100€  : " 
@@ -98,7 +101,7 @@ def printAll():
 
         return res+"</ul>"
     else:
-        return "Invalid request method"
+        return "methode invalide"
     
     
  #endpoint transactions qui affiche les transactions entre 2 Personnenes depuis le fichier csv.
@@ -108,68 +111,68 @@ def get_transactions():
     return "\n".join(str(t) for t in transactions)
 
 #endpoint Personnes qui affiche les Personnenes ayant deja effectué une transaction depuis le fichier csv.
-@app.route("/Personnes", methods=["GET"]) 
+@app.route("/personnes", methods=["GET"]) 
 def get_Personnes():
     load_data_from_csv('transactions.csv')
     #print(Personnes)
-    return "\n".join(str(p) for p in Personnes)
+    return "\n".join(str(p) for p in personnes)
 
 
 
 #endpoint Personne qui permet d'ajouter une Personnene de type Personne ayant nom et balance.
-@app.route("/Personne", methods=["POST"])
+@app.route("/personne", methods=["POST"])
 def add_Personne():
     nom = request.form.get("nom")
     balance = request.form.get("balance")
-    Personne = Personne(nom, balance)
-    Personnes.append(Personne)
-    return "Personne added."
+    personne = Personne(nom, balance)
+    personnes.append(personne)
+    return "Personne ajoutée."
 
 #endpoint Personne/id qui permet de supprimer une Personnene de la liste Personnes
-@app.route('/Personne/<int:Personne_id>', methods=['DELETE'])
+@app.route('/personne/<int:Personne_id>', methods=['DELETE'])
 def delete_Personne(Personne_id):
-    Personne = next((Personne for Personne in Personnes if Personne['id'] == Personne_id), None)
+    personne = next((personne for Personne in Personnes if personne['id'] == personne_id), None)
     if Personne:
-        Personnes.remove(Personne)
-        return {"message": "Personne deleted successfully"}, 200
+        personnes.remove(personne)
+        return {"message": "Personne supprimée"}, 200
     else:
-        return {"error": "Personne not found"}, 404
+        return {"erreur": "Personne introuvable"}, 404
  
 #endpoint /transaction qui sert a ajouter une transaction en prenant en argument l'emetteur, le recepteur et la somme de l'envoi
 @app.route('/transaction', methods=['POST'])
 def add_transaction():
-    sender_nom = request.form['sender']
-    receiver_nom = request.form['receiver']
-    amount = int(request.form['amount'])
+    expediteur_nom = request.form['expediteur']
+    recepteur_nom = request.form['recepteur']
+    montant = int(request.form['montant'])
     
-    sender = next((Personne for Personne in Personnes if Personne.nom == sender_nom), None)
-    receiver = next((Personne for Personne in Personnes if Personne.nom == receiver_nom), None)
+    expediteur = next((personne for personne in personnes if personne.nom == expediteur_nom), None)
+    recepteur = next((personne for personne in personnes if personne.nom == recepteur_nom), None)
     
-    if sender is None or receiver is None:
-        return {"error": "Sender or receiver not found"}, 400
+    if expediteur is None or recepteur is None:
+        return {"erreur": "expediteur ou recepteur introuvable"}, 400
     
-    sender.balance -= amount
-    receiver.balance += amount
+    expediteur.balance -= montant
+    recepteur.balance += montant
     
-    transactions.append(Transaction(sender_nom, receiver_nom, amount))
+    transactions.append(Transaction(expediteur_nom, recepteur_nom, montant))
     
-    return {"message": "Transaction added successfully"}, 200
+    return {"message": "Transaction ajouté"}, 200
 
 #donner le solde de la Personnene prise en compte
 @app.route('/balance/<nom>', methods=['GET'])
 def get_balance(nom):
-    Personne = next((p for p in Personnes if p.nom == nom), None)
+    personne = next((p for p in personnes if p.nom == nom), None)
     if Personne:
-        balance = Personne.balance
-        return jsonify({"nom": Personne.nom, "balance": balance})
-    return jsonify({"error": "Personne not found"}), 404
+        balance = personne.balance
+        return jsonify({"nom": personne.nom, "balance": balance})
+    return jsonify({"erreur": "Personne introuvable"}), 404
 
 
 #lister l'ensemble des transactions par Personnene 
-@app.route('/transactions/<Personne>', methods=['GET'])
-def getTransactions(Personne):
-    Personne_transactions = [t for t in _transactions if t.sender == Personne or t.recipient == Personne]
-    return jsonify([{'sender': t.sender, 'receiver': t.recipient, 'amount': t.amount} for t in Personne_transactions])
+@app.route('/transactions/<personne>', methods=['GET'])
+def getTransactions(personne):
+    personne_transactions = [t for t in _transactions if t.expediteur == personne or t.beneficaire == personne]
+    return jsonify([{'expediteur': t.expediteur, 'recepteur': t.beneficaire, 'montant': t.montant} for t in personne_transactions])
     
     
 if __nom__ == "__main__":
